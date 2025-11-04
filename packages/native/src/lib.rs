@@ -18,10 +18,13 @@ mod link_handler;
 #[doc(inline)]
 pub use dioxus_native_dom::*;
 
+#[cfg(feature = "gpu")]
 pub use anyrender_vello::{CustomPaintCtx, CustomPaintSource, DeviceHandle, TextureHandle};
 use assets::DioxusNativeNetProvider;
 pub use dioxus_application::{DioxusNativeApplication, DioxusNativeEvent};
-pub use dioxus_renderer::{use_wgpu, DioxusNativeWindowRenderer, Features, Limits};
+pub use dioxus_renderer::DioxusNativeWindowRenderer;
+#[cfg(feature = "gpu")]
+pub use dioxus_renderer::{use_wgpu, Features, Limits};
 
 use blitz_shell::{create_default_event_loop, BlitzShellEvent, Config, WindowConfig};
 use dioxus_core::{ComponentFunction, Element, VirtualDom};
