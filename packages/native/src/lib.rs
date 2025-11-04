@@ -79,9 +79,10 @@ pub fn launch_cfg_with_props<P: Clone + 'static, M: 'static>(
     let mut _config = None;
     for mut cfg in configs {
         #[cfg(feature = "gpu")]
-        cfg = try_read_config!(cfg, features, Features);
-        #[cfg(feature = "gpu")]
-        cfg = try_read_config!(cfg, limits, Limits);
+        {
+            cfg = try_read_config!(cfg, features, Features);
+            cfg = try_read_config!(cfg, limits, Limits);
+        }
         cfg = try_read_config!(cfg, window_attributes, WindowAttributes);
         cfg = try_read_config!(cfg, _config, Config);
         let _ = cfg;
