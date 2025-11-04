@@ -22,10 +22,21 @@ hot-reload = ["dep:dioxus-cli-config", "dep:dioxus-devtools"]
 system-fonts = ["blitz-dom/system_fonts"]
 autofocus = []
 
+gpu = ["dep:anyrender_vello"]
+cpu = ["cpu-pixels"]
+cpu-pixels = ["cpu-base", "anyrender_vello_cpu/pixels_window_renderer"]
+cpu-softbuffer = ["cpu-base", "anyrender_vello_cpu/softbuffer_window_renderer"]
+cpu-base = ["dep:anyrender_vello_cpu"]
+hybrid = ["dep:anyrender_vello_hybrid"]
+skia = ["dep:anyrender_skia"]
+
 [dependencies]
 # Blitz dependencies
 anyrender = { workspace = true }
-anyrender_vello = { workspace = true }
+anyrender_vello = { workspace = true, optional = true }
+anyrender_vello_cpu = { workspace = true, features = ["multithreading"], optional = true }
+anyrender_vello_hybrid = { workspace = true, optional = true }
+anyrender_skia = { workspace = true, optional = true }
 blitz-dom = { workspace = true }
 blitz-html = { workspace = true, optional = true }
 blitz-net = { workspace = true, optional = true }

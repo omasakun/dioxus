@@ -224,6 +224,9 @@ blitz-traits = { version = "0.2" }
 blitz-shell = { version = "0.2", default-features = false }
 anyrender = { version = "0.6", default-features = false }
 anyrender_vello = { version = "0.6", default-features = false }
+anyrender_vello_cpu = { version = "0.8" }
+anyrender_vello_hybrid = { version = "0.1" }
+anyrender_skia = { version = "0.2.0" }
 wgpu_context = { version = "0.1", default-features = false }
 wgpu = { version = "26.0" }
 vello = "0.6"

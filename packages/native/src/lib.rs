@@ -135,7 +135,10 @@ pub fn launch_cfg_with_props<P: Clone + 'static, M: 'static>(
             ..Default::default()
         },
     );
+    #[cfg(feature = "gpu")]
     let renderer = DioxusNativeWindowRenderer::with_features_and_limits(features, limits);
+    #[cfg(any(feature = "cpu-base", feature = "hybrid", feature = "skia"))]
+    let renderer = DioxusNativeWindowRenderer::new();
     let config = WindowConfig::with_attributes(
         Box::new(doc) as _,
         renderer.clone(),
